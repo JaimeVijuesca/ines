@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='formulario.css'>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <h1>Antes de recibir tu regalo tienes que hacer un pequeño formulario</h1>
+
+    <!-- Formulario de aquien quieres más  opciones Jaime, Ana o Nacho-->
+
+    <form id="giftForm">
+        <label for="recipient">¿A quién quieres más?</label><br>
+        <select id="recipient" name="recipient">
+            <option value="Jaime">Jaime</option>
+            <option value="Ana">Ana</option>
+            <option value="Nacho">Nacho</option>
+            <option value="Nadie">Nadie</option>
+            <option value="Al Antonio">Al Antonio</option>
+            <option value="Yo">Solo me quiero a mi misma</option>
+            <option value="Todos">A todos los quiero por igual</option>
+        </select><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+   <script src='formulario.js'></script>
+
+</body>
+</html>
