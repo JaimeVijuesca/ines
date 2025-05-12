@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Regalo Final</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='regalofinal.css'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de Regalos</title>
+    <link rel="stylesheet" href="ruleta.css">
 </head>
 <body>
-    
+    <h1>Ruleta de Regalos</h1>
+    <div id="ruleta-container">
+        <div id="flecha"></div> <!-- Flecha fija -->
+        <canvas id="ruleta" width="600" height="600"></canvas>
+    </div>
+    <button id="boton">Girar Ruleta</button>
+    <button id="boton-secreto" style="display: none;">Regalo Seguro</button>
+
+    <script src="ruleta.js"></script>
 </body>
 </html>
