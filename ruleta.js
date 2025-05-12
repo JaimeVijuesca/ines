@@ -56,8 +56,9 @@ function girarRuleta(opcionFija = null) {
     ruletaCanvas.style.transform = `rotate(${anguloActual}deg)`;
 
     setTimeout(() => {
-        const anguloSeleccionado = (360 - (anguloActual % 360)) % 360; // Calcular el ángulo final
-        const indiceSeleccionado = Math.floor(anguloSeleccionado / anguloPorOpcion);
+        // Ajustar el ángulo para que coincida con la flecha (270° o -90°)
+        const anguloSeleccionado = (360 - (anguloActual % 360) + 270) % 360;
+        const indiceSeleccionado = Math.floor(anguloSeleccionado / anguloPorOpcion) % numOpciones;
         alert(`Te tocó: ${opciones[indiceSeleccionado]}`);
     }, 4000); // Esperar a que termine la animación
 }
