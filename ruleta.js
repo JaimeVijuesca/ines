@@ -13,6 +13,7 @@ const boton = document.getElementById("boton");
 const botonSecreto = document.getElementById("boton-secreto");
 
 let anguloActual = 0;
+let girando = false; // Estado de la ruleta
 
 // Dibujar la ruleta
 function dibujarRuleta() {
@@ -45,6 +46,12 @@ function dibujarRuleta() {
 
 // Girar la ruleta
 function girarRuleta(opcionFija = null) {
+
+    if (girando) return; // Evitar que se gire mientras ya está girando
+    girando = true; // Cambiar el estado a girando
+    boton.disabled = true; // Deshabilitar el botón mientras gira
+
+
     const numOpciones = opciones.length;
     const anguloPorOpcion = 360 / numOpciones;
     const giros = Math.floor(Math.random() * 5) + 5; // Giros completos
@@ -59,26 +66,22 @@ function girarRuleta(opcionFija = null) {
         // Ajustar el ángulo para que coincida con la flecha (270° o -90°)
         const anguloSeleccionado = (360 - (anguloActual % 360) + 270) % 360;
         const indiceSeleccionado = Math.floor(anguloSeleccionado / anguloPorOpcion) % numOpciones;
+        if(opciones[indiceSeleccionado] === "Regalo") {
+            setTimeout(() => {
+                  window.location.href = "super-regalo.html"; // Redirigir a la página de regalo
+            }, 1000); // Esperar un segundo antes de mostrar el mensaje
+        }else {
         alert(`Te tocó: ${opciones[indiceSeleccionado]}`);
+        }
+        // Reiniciar el estado
+        girando = false; // Cambiar el estado a no girando
+        boton.disabled = false; // Habilitar el botón nuevamente
     }, 4000); // Esperar a que termine la animación
 }
 
 // Eventos
 boton.addEventListener("click", () => girarRuleta());
-botonSecreto.addEventListener("click", () => girarRuleta(0)); // Siempre selecciona "Regalo"
 
-// Mostrar el botón secreto al mantener presionado Shift
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Shift") {
-        botonSecreto.style.display = "inline-block";
-    }
-});
-
-document.addEventListener("keyup", (e) => {
-    if (e.key === "Shift") {
-        botonSecreto.style.display = "none";
-    }
-});
 
 // Inicializar
 dibujarRuleta();

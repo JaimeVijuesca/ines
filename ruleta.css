@@ -9,6 +9,12 @@ body {
     width: 600px;
     height: 600px;
     margin: 0 auto;
+    z-index: 1; /* Asegura que el canvas esté detrás del botón */
+}
+
+canvas {
+    position: relative;
+    z-index: 1; /* Asegura que el canvas no bloquee el botón */
 }
 
 #flecha {
@@ -23,14 +29,24 @@ body {
     border-bottom: 30px solid #000; /* Flecha negra */
 }
 
-button {
+#boton {
     margin-top: 20px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 18px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    position: relative; /* Asegura que el botón esté en su propio contexto */
+    z-index: 10; /* Coloca el botón por encima de otros elementos */
 }
 
-#boton-secreto {
-    background-color: red;
-    color: white;
+#boton:disabled {
+    background-color: #ccc; /* Color gris cuando está deshabilitado */
+    cursor: not-allowed; /* Cursor no permitido */
+}
+
+#boton:hover:enabled {
+    background-color: #45a049; /* Verde más oscuro al pasar el ratón */
 }
